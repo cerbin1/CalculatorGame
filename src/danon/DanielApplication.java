@@ -29,10 +29,35 @@ public class DanielApplication {
         Operation operation = scanner.readOperation();
         printer.format("Wybrałeś %s", operation.getName());
 
-        int firstNumber = random.nextInt(55) + 5;
-        int secondNumber = random.nextInt(55) + 5;
-        double result = operation.evaluate(firstNumber, secondNumber);
-        printer.format("%d %c %d =", firstNumber, operation.operator(), secondNumber);
+        makeMultipleGuesses(operation);
     }
 
+    private void makeMultipleGuesses(Operation operation) {
+        while (true) {
+            boolean result = makeSingleGuess(operation);
+            if (result) {
+                boolean wannaPlay = scanner.yesNoQuestion("Wygrałeś zią. Chcesz grać jeszcze raz?");
+                if (!wannaPlay) {
+                    printer.writeln("Bajo :)");
+                    break;
+                }
+            } else {
+                printer.write("Złamas");
+            }
+        }
+    }
+
+    private boolean makeSingleGuess(Operation operation) {
+        int firstNumber = randomNumber();
+        int secondNumber = randomNumber();
+        double result = operation.evaluate(firstNumber, secondNumber);
+        printer.format("%d %c %d =", firstNumber, operation.operator(), secondNumber);
+
+        double guessed = scanner.readDouble();
+        return guessed == result;
+    }
+
+    private int randomNumber() {
+        return (random.nextInt(155) + 5) / 5;
+    }
 }
