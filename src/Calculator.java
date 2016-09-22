@@ -1,9 +1,8 @@
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Calculator {
     void run() {
-        Scanner getData = new Scanner(System.in);
+        final static private Scanner scanner = new Scanner(System.in);
 
         Display display = new Display();
         display.askForName();
@@ -12,7 +11,7 @@ public class Calculator {
         Player player = new Player();
 
         while (true) {
-            player.setName(getData.nextLine());
+            player.setName(scanner.nextLine());
             if (player.getName().length() < 3) {
                 System.out.println("Your name is too short. Try type it again.");
             } else {
@@ -21,9 +20,13 @@ public class Calculator {
         }
 
         display.displayHelloMessage(player.getName());
-
-        player.setUsersChoice(getData.nextInt());
+        display.displayInstructions();
         display.displayMenu();
+        display.askForMenuChoice();
+        try {
+            player.setUsersChoice(scanner.nextInt());
+//            Integer.parseInt(player.getUsersChoice());
+        } catch ()
         switch (player.getUsersChoice()) {
             case 1:
                 System.out.println("pizda");
