@@ -34,13 +34,12 @@ public class DanielApplication {
 
     private void makeMultipleGuesses(Operation operation) {
         while (true) {
-            boolean result = makeSingleGuess(operation);
-            if (result) {
-                if (!scanner.yesNoQuestion("Wygrałeś zią. Chcesz grać jeszcze raz?")) {
-                    printer.writeln("Bajo :)");
-                    break;
+            if (makeSingleGuess(operation)) {
+                if (scanner.yesNoQuestion("Wygrałeś zią. Chcesz grać jeszcze raz?")) {
+                    continue;
                 }
-                continue;
+                printer.writeln("Bajo :)");
+                break;
             }
             sayGoodbye();
         }
