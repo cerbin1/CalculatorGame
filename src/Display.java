@@ -1,5 +1,11 @@
 public class Display {
-    public void displayHelloMessage(String name) {
+    Player player = new Player();
+
+    void askForName() {
+        System.out.println("Hello, what is your namne?");
+    }
+
+    void displayHelloMessage(String name) {
         System.out.println("Hello " + name);
     }
 
@@ -15,12 +21,18 @@ public class Display {
         System.out.print("Your choice: ");
     }
 
+    void askForMenuChoice() {
+
+    }
+
     void displayQuestion() {
         //TODO
     }
+
     void displayScore() {
         //TODO
     }
+
     void displayEndMessage(String name) {
         System.out.println("Bye " + name);
     }
