@@ -1,6 +1,9 @@
 package danon;
 
 
+import danon.operation.Operation;
+import danon.operation.Operations;
+
 import java.io.PrintStream;
 
 class PrettyPrinter {
@@ -11,7 +14,7 @@ class PrettyPrinter {
         writeln(message);
     }
 
-    void nextLine() {
+    private void nextLine() {
         writeln("");
     }
 
@@ -21,5 +24,12 @@ class PrettyPrinter {
 
     void writeln(String message) {
         out.println(message);
+    }
+
+    void printOperations(Operations operations) {
+        nextLine();
+        for (Operation operation : operations.getAll()) {
+            format(" %s (%c)", operation.getName(), operation.operator());
+        }
     }
 }

@@ -24,10 +24,7 @@ public class DanielApplication {
 
     private void run() {
         printer.writeln("Wybierz tryb, ziom :)");
-        printer.nextLine();
-        for (Operation operation : operations.getAll()) {
-            printer.format(" %s (%c)", operation.getName(), operation.operator());
-        }
+        printer.printOperations(operations);
 
         Operation operation = scanner.readOperation();
         printer.format("Wybrałeś %s", operation.getName());
