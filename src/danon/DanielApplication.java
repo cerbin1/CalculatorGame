@@ -11,6 +11,7 @@ public class DanielApplication {
     private final PrettyPrinter printer;
     private final Operations operations;
     private final RepeatingScanner scanner;
+    private final PointsCounter points;
 
     public static void main(String... args) {
         new DanielApplication().run();
@@ -20,6 +21,7 @@ public class DanielApplication {
         printer = new PrettyPrinter();
         operations = new Operations();
         scanner = new RepeatingScanner(printer, operations);
+        points = new PointsCounter();
     }
 
     private void run() {
@@ -35,7 +37,9 @@ public class DanielApplication {
     private void makeMultipleGuesses(Operation operation) {
         while (true) {
             if (makeSingleGuess(operation)) {
-                if (scanner.yesNoQuestion("Wygrałeś zią. Chcesz grać jeszcze raz?")) {
+                points.addPoint();
+                String question = String.format("Wygrałeś zią (%d pkt). Chcesz grać jeszcze raz?", points.getPoints());
+                if (scanner.yesNoQuestion(question)) {
                     continue;
                 }
                 printer.writeln("Bajo :)");
