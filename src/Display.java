@@ -19,7 +19,7 @@ public class Display {
         //TODO
     }
     void displayScore() {
-
+        //TODO
     }
     void displayEndMessage(String name) {
         System.out.println("Bye " + name);
