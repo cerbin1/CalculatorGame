@@ -43,7 +43,7 @@ class RepeatingScanner {
     }
 
     boolean yesNoQuestion(String question) {
-        printer.format("%s [y/n]", question);
+        printer.format("%s [y/t/n]", question);
 
         while (true) {
             String string = scanner.nextLine();
