@@ -16,16 +16,6 @@ class RepeatingScanner {
         this.operations = operations;
     }
 
-    public String readNotEmptyString() {
-        while (true) {
-            String string = scanner.nextLine();
-            if (string.length() > 0) {
-                return string;
-            }
-            printer.format("Podany string jest pusty/");
-        }
-    }
-
     Operation readOperation() {
         while (true) {
             String chosenChar = scanner.nextLine();
