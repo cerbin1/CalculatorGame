@@ -7,7 +7,7 @@ class Is {
         return new Is.IsChecker(string);
     }
 
-    private static class IsChecker {
+    static class IsChecker {
         private String value;
 
         IsChecker(String value) {
