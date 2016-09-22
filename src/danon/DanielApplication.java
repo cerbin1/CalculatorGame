@@ -36,14 +36,13 @@ public class DanielApplication {
         while (true) {
             boolean result = makeSingleGuess(operation);
             if (result) {
-                boolean wannaPlay = scanner.yesNoQuestion("Wygrałeś zią. Chcesz grać jeszcze raz?");
-                if (!wannaPlay) {
+                if (!scanner.yesNoQuestion("Wygrałeś zią. Chcesz grać jeszcze raz?")) {
                     printer.writeln("Bajo :)");
                     break;
                 }
-            } else {
-                printer.write("Złamas");
+                continue;
             }
+            sayGoodbye();
         }
     }
 
@@ -59,5 +58,10 @@ public class DanielApplication {
 
     private int randomNumber() {
         return (random.nextInt(155) + 5) / 5;
+    }
+
+    private void sayGoodbye() {
+        printer.writeln("Złamas");
+        System.exit(0);
     }
 }
