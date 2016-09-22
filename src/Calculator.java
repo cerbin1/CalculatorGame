@@ -1,8 +1,10 @@
 import java.util.Scanner;
 
 public class Calculator {
+
+    final static private Scanner scanner = new Scanner(System.in);
+
     void run() {
-        final static private Scanner scanner = new Scanner(System.in);
 
         Display display = new Display();
         display.askForName();
