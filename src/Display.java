@@ -25,8 +25,20 @@ public class Display {
 
     }
 
-    void displayQuestion() {
-        //TODO
+    void displayQuestion(int index, int first, int second) {
+        System.out.println(index + " operation: " + first + " + " + second + " = ?");
+    }
+
+    void askForAnswer() {
+        System.out.print("Your answer: ");
+    }
+
+    void goodAnswer() {
+        System.out.println("Good answer! Plus 1 point.");
+    }
+
+    void wrongAnswer() {
+        System.out.println("Wrong answer! Unfortunatelly you don't get a point :/.");
     }
 
     void displayScore() {

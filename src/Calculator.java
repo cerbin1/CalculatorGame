@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Calculator {
@@ -8,11 +9,12 @@ public class Calculator {
 
         Display display = new Display();
         display.askForName();
-        String dataFromUser;
+        boolean usersMenuChoiceWrong = true;
+
 
         Player player = new Player();
 
-        while (true) {
+/*        while (true) {
             player.setName(scanner.nextLine());
             if (player.getName().length() < 3) {
                 System.out.println("Your name is too short. Try type it again.");
@@ -24,14 +26,33 @@ public class Calculator {
         display.displayHelloMessage(player.getName());
         display.displayInstructions();
         display.displayMenu();
-        display.askForMenuChoice();
-        try {
-            player.setUsersChoice(scanner.nextInt());
-//            Integer.parseInt(player.getUsersChoice());
-        } catch ()
-        switch (player.getUsersChoice()) {
-            case 1:
-                System.out.println("pizda");
+        display.askForMenuChoice();*/
+        while (usersMenuChoiceWrong) {
+/*            try {
+                String usersChoice = scanner.nextLine();
+                player.setUsersChoice(Integer.parseInt(usersChoice));
+            } catch (NumberFormatException e) {
+                System.err.println("Wrong number");
+            }
+            switch (player.getUsersChoice()) {*/
+            switch (1) {
+                case 1:
+                    for (int i = 1; i < 2; i++) {
+                        int firstNumber = (int)(Math.random() * 10) + 1;
+                        int secondNumber = (int)(Math.random() * 10) + 1;
+
+                        display.displayQuestion(i, firstNumber, secondNumber);
+                        display.askForAnswer();
+
+                        if(Objects.equals(scanner.nextLine(), Integer.toString(firstNumber + secondNumber))) {
+                            display.goodAnswer();
+                        }
+                        else {
+                            display.wrongAnswer();
+                        }
+                    }
+                    usersMenuChoiceWrong = false;
+            }
         }
     }
 }
