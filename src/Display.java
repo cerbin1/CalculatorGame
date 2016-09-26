@@ -25,8 +25,8 @@ public class Display {
 
     }
 
-    void displayQuestion(int index, int first, int second) {
-        System.out.println(index + " operation: " + first + " + " + second + " = ?");
+    void displayQuestion(int index, int first, int second, char operative) {
+        System.out.println(index + " operation: " + first + " " + operative + " " + second + " = ?");
     }
 
     void askForAnswer() {
@@ -38,11 +38,11 @@ public class Display {
     }
 
     void wrongAnswer() {
-        System.out.println("Wrong answer! Unfortunatelly you don't get a point :/.");
+        System.out.println("Wrong answer! Unfortunately you don't get a point :/.");
     }
 
-    void displayScore() {
-        //TODO
+    void displayScore(Player p) {
+        System.out.println(p.getScore());
     }
 
     void displayEndMessage(String name) {
