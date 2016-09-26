@@ -19,8 +19,6 @@ public class Calculator {
         display.askForName();
 
 
-
-
         while (true) {
             player.setName(scanner.nextLine());
             if (player.getName().length() < 3) {
