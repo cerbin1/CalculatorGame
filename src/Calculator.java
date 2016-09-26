@@ -9,16 +9,19 @@ public class Calculator {
     private int secondNumber;
     private int difficulty;
 
+    private boolean usersMenuChoiceWrong = true;
+
     void run() {
 
         Display display = new Display();
-        display.askForName();
-        boolean usersMenuChoiceWrong = true;
-
-
         Player player = new Player();
 
-/*        while (true) {
+        display.askForName();
+
+
+
+
+        while (true) {
             player.setName(scanner.nextLine());
             if (player.getName().length() < 3) {
                 System.out.println("Your name is too short. Try type it again.");
@@ -30,30 +33,38 @@ public class Calculator {
         display.displayHelloMessage(player.getName());
         display.displayInstructions();
 
-        display.displayMenu();
-        display.askForMenuChoice();*/
 
         while (true) {
-            if ((player.getDifficultyLevel() != 10) && (player.getDifficultyLevel() != 100) && (player.getDifficultyLevel() != 1000)) {
+            if ((player.getDifficultyLevel() != 1) && (player.getDifficultyLevel() != 2) && (player.getDifficultyLevel() != 3)) {
                 display.askForDifficultyLevel();
                 player.setDifficultyLevel(scanner.nextInt());
             } else {
                 break;
             }
         }
-
-        difficulty = player.getDifficultyLevel();
+        switch (player.getDifficultyLevel()) {
+            case 1:
+                difficulty = 10;
+                break;
+            case 2:
+                difficulty = 100;
+                break;
+            case 3:
+                difficulty = 1000;
+                break;
+        }
         scanner.nextLine();
 
+        display.displayMenu();
+        display.askForMenuChoice();
         while (usersMenuChoiceWrong) {
-/*            try {
+            try {
                 String usersChoice = scanner.nextLine();
                 player.setUsersChoice(Integer.parseInt(usersChoice));
             } catch (NumberFormatException e) {
                 System.err.println("Wrong number");
             }
-            switch (player.getUsersChoice()) {*/
-            switch (1) {
+            switch (player.getUsersChoice()) {
                 case 1:
                     for (int i = 1; i <= 10; i++) {
                         firstNumber = (int) (Math.random() * difficulty) + 1;
