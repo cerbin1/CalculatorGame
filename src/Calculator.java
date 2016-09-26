@@ -7,6 +7,8 @@ public class Calculator {
 
     private int firstNumber;
     private int secondNumber;
+    private int difficulty;
+
     void run() {
 
         Display display = new Display();
@@ -27,8 +29,22 @@ public class Calculator {
 
         display.displayHelloMessage(player.getName());
         display.displayInstructions();
+
         display.displayMenu();
         display.askForMenuChoice();*/
+
+        while (true) {
+            if ((player.getDifficultyLevel() != 10) && (player.getDifficultyLevel() != 100) && (player.getDifficultyLevel() != 1000)) {
+                display.askForDifficultyLevel();
+                player.setDifficultyLevel(scanner.nextInt());
+            } else {
+                break;
+            }
+        }
+
+        difficulty = player.getDifficultyLevel();
+        scanner.nextLine();
+
         while (usersMenuChoiceWrong) {
 /*            try {
                 String usersChoice = scanner.nextLine();
@@ -40,10 +56,10 @@ public class Calculator {
             switch (1) {
                 case 1:
                     for (int i = 1; i <= 10; i++) {
-                        firstNumber = (int) (Math.random() * 10) + 1;
-                        secondNumber = (int) (Math.random() * 10) + 1;
+                        firstNumber = (int) (Math.random() * difficulty) + 1;
+                        secondNumber = (int) (Math.random() * difficulty) + 1;
 
-                        display.displayQuestion(i, firstNumber, secondNumber, '-');
+                        display.displayQuestion(i, firstNumber, secondNumber, '+');
                         display.askForAnswer();
 
                         if (Objects.equals(scanner.nextLine(), Integer.toString(firstNumber + secondNumber))) {
@@ -57,11 +73,13 @@ public class Calculator {
                     break;
                 case 2:
                     for (int i = 1; i <= 10; i++) {
-                        firstNumber = (int) (Math.random() * 10) + 1;
-                        secondNumber = (int) (Math.random() * 10) + 1;
+                        firstNumber = (int) (Math.random() * difficulty) + 1;
+                        secondNumber = (int) (Math.random() * difficulty) + 1;
 
+                        System.out.println(Integer.toString(firstNumber - secondNumber));
                         display.displayQuestion(i, firstNumber, secondNumber, '-');
                         display.askForAnswer();
+
 
                         if (Objects.equals(scanner.nextLine(), Integer.toString(firstNumber - secondNumber))) {
                             display.goodAnswer();
@@ -74,8 +92,8 @@ public class Calculator {
                     break;
                 case 3:
                     for (int i = 1; i <= 10; i++) {
-                        firstNumber = (int) (Math.random() * 10) + 1;
-                        secondNumber = (int) (Math.random() * 10) + 1;
+                        firstNumber = (int) (Math.random() * difficulty) + 1;
+                        secondNumber = (int) (Math.random() * difficulty) + 1;
 
                         display.displayQuestion(i, firstNumber, secondNumber, '*');
                         display.askForAnswer();
@@ -91,8 +109,8 @@ public class Calculator {
                     break;
                 case 4:
                     for (int i = 1; i <= 10; i++) {
-                        firstNumber = (int) (Math.random() * 10) + 1;
-                        secondNumber = (int) (Math.random() * 10) + 1;
+                        firstNumber = (int) (Math.random() * difficulty) + 1;
+                        secondNumber = (int) (Math.random() * difficulty) + 1;
 
                         display.displayQuestion(i, firstNumber, secondNumber, '/');
                         display.askForAnswer();

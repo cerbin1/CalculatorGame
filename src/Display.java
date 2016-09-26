@@ -25,6 +25,10 @@ public class Display {
 
     }
 
+    void askForDifficultyLevel() {
+        System.out.print("Which difficulty do you choose? 10, 100, 1000");
+    }
+
     void displayQuestion(int index, int first, int second, char operative) {
         System.out.println(index + " operation: " + first + " " + operative + " " + second + " = ?");
     }
@@ -42,7 +46,7 @@ public class Display {
     }
 
     void displayScore(Player p) {
-        System.out.println(p.getScore());
+        System.out.println("You achieved " + p.getScore() + " points.");
     }
 
     void displayEndMessage(String name) {

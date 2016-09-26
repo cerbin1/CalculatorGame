@@ -24,8 +24,14 @@ public class Player {
         return score;
     }
 
-    public void addPoint(Player score) {
+    public void addPoint(Player player) {
         this.score++;
+    }
+    public void setDifficultyLevel(int diff) {
+        this.difficultyLevel = diff;
+    }
+    public int getDifficultyLevel() {
+        return difficultyLevel;
     }
 
 
