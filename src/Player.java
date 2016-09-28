@@ -2,7 +2,7 @@ class Player {
     private String name;
     private int score = 0;
     private int menuChoice;
-    private int difficultyLevel;
+    private String difficultyLevel;
 
     public void setName(String name) {
         this.name = name;
@@ -28,11 +28,11 @@ class Player {
         return menuChoice;
     }
 
-    public void setDifficultyLevel(int diff) {
+    public void setDifficultyLevel(String diff) {
         this.difficultyLevel = diff;
     }
 
-    public int getDifficultyLevel() {
+    public String getDifficultyLevel() {
         return difficultyLevel;
     }
 

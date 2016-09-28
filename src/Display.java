@@ -25,9 +25,9 @@ public class Display {
 
     void askForDifficultyLevel() {
         System.out.println("Which difficulty do you choose?");
-        System.out.println("1. - Max one-digit operations");
-        System.out.println("2. - Max two-digits operations");
-        System.out.println("3. - Max three-digits operations");
+        System.out.println("'easy' - Max one-digit operations");
+        System.out.println("'medium' - Max two-digits operations");
+        System.out.println("'hard' - Max three-digits operations");
         System.out.print("Your choice: ");
 
     }

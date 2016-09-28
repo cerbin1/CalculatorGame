@@ -14,6 +14,9 @@ public class Calculator {
         Display display = new Display();
         Player player = new Player();
 
+
+
+
 /*        display.askForName();
 
 
@@ -30,32 +33,30 @@ public class Calculator {
         display.displayInstructions();*/
 
         display.askForDifficultyLevel();
-        player.setDifficultyLevel(scanner.nextInt());
-
+        player.setDifficultyLevel(scanner.nextLine());
 
         while (true) {
-            if ((player.getDifficultyLevel() != 1) && (player.getDifficultyLevel() != 2) && (player.getDifficultyLevel() != 3)) {
-                System.err.println("You chose wrong difficulty option. Try againt.");
-                scanner.nextLine();
-                display.askForDifficultyLevel();
-//                player.setDifficultyLevel(scanner.nextInt());
-                player.setDifficultyLevel(scanner.nextInt());
-            } else {
-                break;
-            }
-        }
-        switch (player.getDifficultyLevel()) {
-            case 1:
+            if (player.getDifficultyLevel().equals("easy")) {
+                System.out.println("latwo");
                 difficulty = 10;
                 break;
-            case 2:
+            }
+            else if (player.getDifficultyLevel().equals("medium") ) {
+                System.out.println("srednio");
                 difficulty = 100;
                 break;
-            case 3:
+            }
+            else if (player.getDifficultyLevel().equals("hard")) {
+                System.out.println("cienszko");
                 difficulty = 1000;
                 break;
+            }
+            else {
+                System.err.println("Wrong option. Try to type it once more.");
+                display.askForDifficultyLevel();
+                player.setDifficultyLevel(scanner.nextLine());
+            }
         }
-//        scanner.nextLine();
 
         display.displayMenu();
         display.askForMenuChoice();
