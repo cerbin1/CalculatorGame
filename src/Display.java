@@ -1,4 +1,4 @@
-public class Display {
+class Display {
 
     void askForName() {
         System.out.println("Hello, what is your namne?");
@@ -9,10 +9,11 @@ public class Display {
     }
 
     void displayInstructions() {
-        System.out.println("DisplayInstructions"); //TODO display Instructions
+        System.out.println("You will have to choose the difficulty of the game and then choose which operations do you want to do.");
     }
 
     void displayMenu() {
+        System.out.println("Now choose what you want to do:");
         System.out.println("1. Addition");
         System.out.println("2. Subtraction");
         System.out.println("3. Multiplication");
@@ -52,7 +53,7 @@ public class Display {
         System.out.println("You achieved " + p.getScore() + " points.");
     }
 
-    void displayEndMessage(String name) {
-        System.out.println("Bye " + name);
+    void displayEndMessage(Player p) {
+        System.out.println("Bye " + p.getName());
     }
 }

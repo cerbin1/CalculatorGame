@@ -1,11 +1,9 @@
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Calculator {
+class Calculator {
 
     final static private Scanner scanner = new Scanner(System.in);
-
-    private int difficulty;
 
     private boolean usersMenuChoiceWrong = true;
 
@@ -17,7 +15,7 @@ public class Calculator {
 
 
 
-/*        display.askForName();
+        display.askForName();
 
 
         while (true) {
@@ -30,28 +28,26 @@ public class Calculator {
         }
 
         display.displayHelloMessage(player);
-        display.displayInstructions();*/
+        display.displayInstructions();
 
         display.askForDifficultyLevel();
         player.setDifficultyLevel(scanner.nextLine());
 
+        int difficulty;
         while (true) {
             if (player.getDifficultyLevel().equals("easy")) {
-                System.out.println("latwo");
+                System.out.println("You choosed easy level.");
                 difficulty = 10;
                 break;
-            }
-            else if (player.getDifficultyLevel().equals("medium") ) {
-                System.out.println("srednio");
+            } else if (player.getDifficultyLevel().equals("medium")) {
+                System.out.println("You choosed medium level.");
                 difficulty = 100;
                 break;
-            }
-            else if (player.getDifficultyLevel().equals("hard")) {
-                System.out.println("cienszko");
+            } else if (player.getDifficultyLevel().equals("hard")) {
+                System.out.println("You choosed hard level.");
                 difficulty = 1000;
                 break;
-            }
-            else {
+            } else {
                 System.err.println("Wrong option. Try to type it once more.");
                 display.askForDifficultyLevel();
                 player.setDifficultyLevel(scanner.nextLine());
@@ -65,7 +61,7 @@ public class Calculator {
                 String usersChoice = scanner.nextLine();
                 player.setMenuChoice(Integer.parseInt(usersChoice));
             } catch (NumberFormatException e) {
-                System.err.println("Wrong number");
+                System.err.println("Wrong number!");
             }
             switch (player.getMenuChoice()) {
                 case 1:
@@ -143,5 +139,6 @@ public class Calculator {
             }
         }
         display.displayScore(player);
+        display.displayEndMessage(player);
     }
 }
