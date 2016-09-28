@@ -5,8 +5,6 @@ public class Calculator {
 
     final static private Scanner scanner = new Scanner(System.in);
 
-    private int firstNumber;
-    private int secondNumber;
     private int difficulty;
 
     private boolean usersMenuChoiceWrong = true;
@@ -16,7 +14,7 @@ public class Calculator {
         Display display = new Display();
         Player player = new Player();
 
-        display.askForName();
+/*        display.askForName();
 
 
         while (true) {
@@ -28,13 +26,19 @@ public class Calculator {
             }
         }
 
-        display.displayHelloMessage(player.getName());
-        display.displayInstructions();
+        display.displayHelloMessage(player);
+        display.displayInstructions();*/
+
+        display.askForDifficultyLevel();
+        player.setDifficultyLevel(scanner.nextInt());
 
 
         while (true) {
             if ((player.getDifficultyLevel() != 1) && (player.getDifficultyLevel() != 2) && (player.getDifficultyLevel() != 3)) {
+                System.err.println("You chose wrong difficulty option. Try againt.");
+                scanner.nextLine();
                 display.askForDifficultyLevel();
+//                player.setDifficultyLevel(scanner.nextInt());
                 player.setDifficultyLevel(scanner.nextInt());
             } else {
                 break;
@@ -51,19 +55,21 @@ public class Calculator {
                 difficulty = 1000;
                 break;
         }
-        scanner.nextLine();
+//        scanner.nextLine();
 
         display.displayMenu();
         display.askForMenuChoice();
         while (usersMenuChoiceWrong) {
             try {
                 String usersChoice = scanner.nextLine();
-                player.setUsersChoice(Integer.parseInt(usersChoice));
+                player.setMenuChoice(Integer.parseInt(usersChoice));
             } catch (NumberFormatException e) {
                 System.err.println("Wrong number");
             }
-            switch (player.getUsersChoice()) {
+            switch (player.getMenuChoice()) {
                 case 1:
+                    int firstNumber;
+                    int secondNumber;
                     for (int i = 1; i <= 10; i++) {
                         firstNumber = (int) (Math.random() * difficulty) + 1;
                         secondNumber = (int) (Math.random() * difficulty) + 1;
@@ -73,7 +79,7 @@ public class Calculator {
 
                         if (Objects.equals(scanner.nextLine(), Integer.toString(firstNumber + secondNumber))) {
                             display.goodAnswer();
-                            player.addPoint(player);
+                            player.addPoint();
                         } else {
                             display.wrongAnswer();
                         }
@@ -92,7 +98,7 @@ public class Calculator {
 
                         if (Objects.equals(scanner.nextLine(), Integer.toString(firstNumber - secondNumber))) {
                             display.goodAnswer();
-                            player.addPoint(player);
+                            player.addPoint();
                         } else {
                             display.wrongAnswer();
                         }
@@ -109,7 +115,7 @@ public class Calculator {
 
                         if (Objects.equals(scanner.nextLine(), Integer.toString(firstNumber * secondNumber))) {
                             display.goodAnswer();
-                            player.addPoint(player);
+                            player.addPoint();
                         } else {
                             display.wrongAnswer();
                         }
@@ -126,7 +132,7 @@ public class Calculator {
 
                         if (Objects.equals(scanner.nextLine(), Integer.toString(firstNumber / secondNumber))) {
                             display.goodAnswer();
-                            player.addPoint(player);
+                            player.addPoint();
                         } else {
                             display.wrongAnswer();
                         }
