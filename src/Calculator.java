@@ -12,7 +12,10 @@ class Calculator {
         Display display = new Display();
         Player player = new Player();
 
-
+/*        Player.difficultyLevel powinno być enumem, a nie stringiem.
+        klasa Display powinna dostawać gracza w konstruktorze i zapiasć  TODO
+        go do polaw klasie Display metody które zaczynają się od ask powinny
+        w środu robić scanner.nextLine() i zwracać to co ktoś wpisał.*/
 
 
         display.askForName();
