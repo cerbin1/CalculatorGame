@@ -6,20 +6,14 @@ import java.util.Scanner;
 import static bartek.Difficulty.*;
 
 class Calculator {
-
     final static private Scanner scanner = new Scanner(System.in);
-
     private boolean usersMenuChoiceWrong = true;
 
-
     void run() {
-
         Player player = new Player();
         Display display = new Display(player, scanner);
 
-
         display.askForName();
-
 
         while (true) {
             player.setName(scanner.nextLine());
@@ -32,7 +26,6 @@ class Calculator {
 
         display.displayHelloMessage();
         display.displayInstructions();
-
 
         player.setDifficulty(display.askForDifficultyLevel());
 
