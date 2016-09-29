@@ -11,8 +11,15 @@ class Display {
         this.scanner = scanner;
     }
 
-    void askForName() {
-        System.out.println("Hello, what is your namne?");
+    String askForName() {
+        System.out.println("Hello, what is your name?");
+        while (true) {
+            String input = scanner.nextLine();
+            if (input.length() >= 3) {
+                return input;
+            }
+            System.out.println("Your name is too short. Try type it again.");
+        }
     }
 
     void displayHelloMessage() {
