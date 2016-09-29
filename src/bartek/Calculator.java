@@ -1,5 +1,9 @@
+package bartek;
+
 import java.util.Objects;
 import java.util.Scanner;
+
+import static bartek.Difficulty.*;
 
 class Calculator {
 
@@ -7,11 +11,11 @@ class Calculator {
 
     private boolean usersMenuChoiceWrong = true;
 
+
     void run() {
 
-        Display display = new Display();
         Player player = new Player();
-
+        Display display = new Display(player, scanner);
 
 
         display.askForName();
@@ -26,30 +30,29 @@ class Calculator {
             }
         }
 
-        display.displayHelloMessage(player);
+        display.displayHelloMessage();
         display.displayInstructions();
 
-        display.askForDifficultyLevel();
-        player.setDifficultyLevel(scanner.nextLine());
+
+        player.setDifficulty(display.askForDifficultyLevel());
 
         int difficulty;
         while (true) {
-            if (player.getDifficultyLevel().equals("easy")) {
+            if (player.getDifficulty() == EASY) {
                 System.out.println("You choosed easy level.");
                 difficulty = 10;
                 break;
-            } else if (player.getDifficultyLevel().equals("medium")) {
+            } else if (player.getDifficulty() == MEDIUM) {
                 System.out.println("You choosed medium level.");
                 difficulty = 100;
                 break;
-            } else if (player.getDifficultyLevel().equals("hard")) {
+            } else if (player.getDifficulty() == HARD) {
                 System.out.println("You choosed hard level.");
                 difficulty = 1000;
                 break;
             } else {
                 System.err.println("Wrong option. Try to type it once more.");
-                display.askForDifficultyLevel();
-                player.setDifficultyLevel(scanner.nextLine());
+                player.setDifficulty(display.askForDifficultyLevel());
             }
         }
 

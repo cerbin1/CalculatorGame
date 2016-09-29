@@ -1,15 +1,23 @@
+package bartek;
+
+import java.util.Scanner;
+
 class Display {
-    public Display() {
+    private final Player player;
+    private final Scanner scanner;
+
+    Display(Player player, Scanner scanner) {
+        this.player = player;
+        this.scanner = scanner;
 
     }
-    // TODO klasa Display powinna dostawać gracza w konstruktorze i zapiasć go do pola
 
     void askForName() {
         System.out.println("Hello, what is your namne?");
     }
 
-    void displayHelloMessage(Player p) {
-        System.out.println("Hello " + p.getName());
+    void displayHelloMessage() {
+        System.out.println("Hello " + player.getName());
     }
 
     void displayInstructions() {
@@ -28,13 +36,19 @@ class Display {
         System.out.print("Your choice: ");
     }
 
-    void askForDifficultyLevel() {
+    Difficulty askForDifficultyLevel() {
+        displayDifficulties();
+        System.out.print("Your choice: ");
+        String string = scanner.nextLine();
+        string = string.toUpperCase();
+        return Difficulty.valueOf(string);
+    }
+
+    private void displayDifficulties() {
         System.out.println("Which difficulty do you choose?");
         System.out.println("'easy' - Max one-digit operations");
         System.out.println("'medium' - Max two-digits operations");
         System.out.println("'hard' - Max three-digits operations");
-        System.out.print("Your choice: ");
-
     }
 
     void displayQuestion(int index, int first, int second, char operative) {
