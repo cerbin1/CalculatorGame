@@ -13,16 +13,7 @@ class Calculator {
         Player player = new Player();
         Display display = new Display(player, scanner);
 
-        display.askForName();
-
-        while (true) {
-            player.setName(scanner.nextLine());
-            if (player.getName().length() < 3) {
-                System.out.println("Your name is too short. Try type it again.");
-            } else {
-                break;
-            }
-        }
+        player.setName(display.askForName());
 
         display.displayHelloMessage();
         display.displayInstructions();
@@ -133,7 +124,7 @@ class Calculator {
                     break;
             }
         }
-        display.displayScore(player);
-        display.displayEndMessage(player);
+        display.displayScore();
+        display.displayEndMessage();
     }
 }
