@@ -1,4 +1,8 @@
 class Display {
+    public Display() {
+
+    }
+    // TODO klasa Display powinna dostawać gracza w konstruktorze i zapiasć go do pola
 
     void askForName() {
         System.out.println("Hello, what is your namne?");
@@ -57,3 +61,4 @@ class Display {
         System.out.println("Bye " + p.getName());
     }
 }
+// TODO w klasie Display metody które zaczynają się od ask powinny w środu robić scanner.nextLine() i zwracać to co ktoś wpisał.

@@ -2,7 +2,7 @@ class Player {
     private String name;
     private int score = 0;
     private int menuChoice;
-    private String difficultyLevel;
+    private String difficultyLevel; //TODO Player.difficultyLevel powinno być enumem, a nie stringiem.
 
     public void setName(String name) {
         this.name = name;
