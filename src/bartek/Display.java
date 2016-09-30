@@ -74,11 +74,11 @@ class Display {
     }
 
     void displayScore() {
-        System.out.println("You achieved " + player.getScore() + " points.");
+        System.out.println("You achieved " + player.getScore() + "/10 points.");
     }
 
     void displayEndMessage() {
-        System.out.println("Bye " + player.getName());
+        System.out.println("Bye " + player.getName() + ".");
     }
 }
 // TODO w klasie Display metody które zaczynają się od ask powinny w środu robić scanner.nextLine() i zwracać to co ktoś wpisał.
