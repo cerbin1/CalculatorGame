@@ -40,10 +40,11 @@ class Calculator {
             }
         }
 
-        display.displayMenu();
-        display.askForMenuChoice();
+
         while (usersMenuChoiceWrong) {
             try {
+                display.displayMenu();
+                display.askForMenuChoice();
                 String usersChoice = scanner.nextLine();
                 player.setMenuChoice(Integer.parseInt(usersChoice));
             } catch (NumberFormatException e) {
@@ -122,6 +123,8 @@ class Calculator {
                     }
                     usersMenuChoiceWrong = false;
                     break;
+                default:
+                    System.out.println("You chose wrong option. Try to type it again.");
             }
         }
         display.displayScore();
