@@ -3,8 +3,6 @@ package bartek;
 import java.util.Objects;
 import java.util.Scanner;
 
-import static bartek.Difficulty.*;
-
 class Calculator {
     final static private Scanner scanner = new Scanner(System.in);
     private boolean usersMenuChoiceWrong = true;
@@ -18,27 +16,11 @@ class Calculator {
         display.displayHelloMessage();
         display.displayInstructions();
 
-        player.setDifficulty(display.askForDifficultyLevel());
+        Difficulty userDifficulty = display.askForDifficultyLevel();
+        player.setDifficulty(userDifficulty);
 
-        int difficulty;
-        while (true) {
-            if (player.getDifficulty() == EASY) {
-                System.out.println("You chose easy level.");
-                difficulty = 10;
-                break;
-            } else if (player.getDifficulty() == MEDIUM) {
-                System.out.println("You chose medium level.");
-                difficulty = 100;
-                break;
-            } else if (player.getDifficulty() == HARD) {
-                System.out.println("You chose hard level.");
-                difficulty = 1000;
-                break;
-            } else {
-                System.err.println("Wrong option. Try to type it once more.");
-                player.setDifficulty(display.askForDifficultyLevel());
-            }
-        }
+        int level = userDifficulty.getLevel();
+        System.out.println(userDifficulty.getDescription());
 
         while (usersMenuChoiceWrong) {
             try {
@@ -54,8 +36,8 @@ class Calculator {
                     int firstNumber;
                     int secondNumber;
                     for (int i = 1; i <= 10; i++) {
-                        firstNumber = (int) (Math.random() * difficulty) + 1;
-                        secondNumber = (int) (Math.random() * difficulty) + 1;
+                        firstNumber = (int) (Math.random() * level) + 1;
+                        secondNumber = (int) (Math.random() * level) + 1;
 
                         display.displayQuestion(i, firstNumber, secondNumber, '+');
                         display.askForAnswer();
@@ -71,8 +53,8 @@ class Calculator {
                     break;
                 case 2:
                     for (int i = 1; i <= 10; i++) {
-                        firstNumber = (int) (Math.random() * difficulty) + 1;
-                        secondNumber = (int) (Math.random() * difficulty) + 1;
+                        firstNumber = (int) (Math.random() * level) + 1;
+                        secondNumber = (int) (Math.random() * level) + 1;
 
                         System.out.println(Integer.toString(firstNumber - secondNumber));
                         display.displayQuestion(i, firstNumber, secondNumber, '-');
@@ -90,8 +72,8 @@ class Calculator {
                     break;
                 case 3:
                     for (int i = 1; i <= 10; i++) {
-                        firstNumber = (int) (Math.random() * difficulty) + 1;
-                        secondNumber = (int) (Math.random() * difficulty) + 1;
+                        firstNumber = (int) (Math.random() * level) + 1;
+                        secondNumber = (int) (Math.random() * level) + 1;
 
                         display.displayQuestion(i, firstNumber, secondNumber, '*');
                         display.askForAnswer();
@@ -107,8 +89,8 @@ class Calculator {
                     break;
                 case 4:
                     for (int i = 1; i <= 10; i++) {
-                        firstNumber = (int) (Math.random() * difficulty) + 1;
-                        secondNumber = (int) (Math.random() * difficulty) + 1;
+                        firstNumber = (int) (Math.random() * level) + 1;
+                        secondNumber = (int) (Math.random() * level) + 1;
 
                         display.displayQuestion(i, firstNumber, secondNumber, '/');
                         display.askForAnswer();
