@@ -23,15 +23,15 @@ class Calculator {
         int difficulty;
         while (true) {
             if (player.getDifficulty() == EASY) {
-                System.out.println("You choosed easy level.");
+                System.out.println("You chose easy level.");
                 difficulty = 10;
                 break;
             } else if (player.getDifficulty() == MEDIUM) {
-                System.out.println("You choosed medium level.");
+                System.out.println("You chose medium level.");
                 difficulty = 100;
                 break;
             } else if (player.getDifficulty() == HARD) {
-                System.out.println("You choosed hard level.");
+                System.out.println("You chose hard level.");
                 difficulty = 1000;
                 break;
             } else {
@@ -39,7 +39,6 @@ class Calculator {
                 player.setDifficulty(display.askForDifficultyLevel());
             }
         }
-
 
         while (usersMenuChoiceWrong) {
             try {
