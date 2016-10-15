@@ -2,6 +2,7 @@ package bartek;
 
 import java.util.Scanner;
 
+// TODO w klasie Display metody które zaczynają się od ask powinny w środu robić scanner.nextLine() i zwracać to co ktoś wpisał.
 class Display {
     private final Player player;
     private final Scanner scanner;
@@ -81,4 +82,3 @@ class Display {
         System.out.println("Bye " + player.getName() + ".");
     }
 }
-// TODO w klasie Display metody które zaczynają się od ask powinny w środu robić scanner.nextLine() i zwracać to co ktoś wpisał.

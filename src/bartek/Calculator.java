@@ -22,18 +22,21 @@ class Calculator {
         int level = userDifficulty.getLevel();
         System.out.println(userDifficulty.getDescription());
 
+        // TODO usersMenuChoiceWrong do wyjebania
+        // TODO flagi są chujowe, a usersMenuChoiceWrong jest flagą
+
         while (usersMenuChoiceWrong) {
             try {
-                display.displayMenu();
-                display.askForMenuChoice();
+                display.displayMenu(); // TODO to
+                display.askForMenuChoice(); // TODO i to powinno być poza tryem (bo te dwie linijki nie rzucą wyjątku)
                 String usersChoice = scanner.nextLine();
-                player.setMenuChoice(Integer.parseInt(usersChoice));
+                player.setMenuChoice(Integer.parseInt(usersChoice)); // TODO menu choice powinno być enumem
             } catch (NumberFormatException e) {
                 System.err.println("Wrong number!");
             }
-            switch (player.getMenuChoice()) {
-                case 1:
-                    int firstNumber;
+            switch (player.getMenuChoice()) { // TODO switche są chujowe
+                case 1:                       // TODO zamiast tego trzeba zrobić polimorfizm (zobacz na wszystkie casy, zobacz co mają wspólnego a co różnego. To co mają wspólnego to do interfejsu, to co różnego to do klas.
+                    int firstNumber;          // TODO możesz wieżyć lub nie ale to powinna być jedna linijka (cały ten switch)
                     int secondNumber;
                     for (int i = 1; i <= 10; i++) {
                         firstNumber = (int) (Math.random() * level) + 1;

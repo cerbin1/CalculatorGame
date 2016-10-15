@@ -6,7 +6,7 @@ class Player {
     private int menuChoice;
     private Difficulty difficulty;
 
-    void setName(String name) {
+    void setName(String name) { // TODO to powinien być parametr konstruktora
         this.name = name;
     }
 
