@@ -34,9 +34,9 @@ class Calculator {
             } catch (NumberFormatException e) {
                 System.err.println("Wrong number!");
             }
-            switch (player.getMenuChoice()) { // TODO switche są chujowe
-                case 1:                       // TODO zamiast tego trzeba zrobić polimorfizm (zobacz na wszystkie casy, zobacz co mają wspólnego a co różnego. To co mają wspólnego to do interfejsu, to co różnego to do klas.
-                    int firstNumber;          // TODO możesz wieżyć lub nie ale to powinna być jedna linijka (cały ten switch)
+            switch (player.getMenuChoice()) { // TODO zadanie na skype
+                case 1:
+                    int firstNumber;
                     int secondNumber;
                     for (int i = 1; i <= 10; i++) {
                         firstNumber = (int) (Math.random() * level) + 1;
