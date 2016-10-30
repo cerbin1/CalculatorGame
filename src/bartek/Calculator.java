@@ -1,9 +1,6 @@
 package bartek;
 
-import bartek.operation.Addition;
-import bartek.operation.Multiplication;
-import bartek.operation.Operation;
-import bartek.operation.Substraction;
+import bartek.operation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +16,7 @@ class Calculator {
         List<Operation> operations = new ArrayList<>();
         operations.add(new Addition());
         operations.add(new Substraction());
+        operations.add(new Power());
         operations.add(new Multiplication());
 
         Display display = new Display(player, scanner, operations);
