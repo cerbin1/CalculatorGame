@@ -1,15 +1,24 @@
 package bartek;
 
+import bartek.operation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
 class Calculator {
     final static private Scanner scanner = new Scanner(System.in);
-    private boolean usersMenuChoiceWrong = true;
+    private List<Operation> operations = new ArrayList<>();
 
     void run() {
         Player player = new Player();
-        Display display = new Display(player, scanner);
+        operations.add(new Addition());
+        operations.add(new Substraction());
+        operations.add(new Power());
+        operations.add(new Multiplication());
+
+        Display display = new Display(player, scanner, operations);
 
         player.setName(display.askForName());
 
@@ -17,118 +26,43 @@ class Calculator {
         display.displayInstructions();
 
         Difficulty userDifficulty = display.askForDifficultyLevel();
-        player.setDifficulty(userDifficulty);
 
         int level = userDifficulty.getLevel();
         System.out.println(userDifficulty.getDescription());
 
-        // TODO usersMenuChoiceWrong do wyjebania
-        // TODO flagi są chujowe, a usersMenuChoiceWrong jest flagą
+        display.displayMenu();
+        display.askForMenuChoice();
 
-        while (usersMenuChoiceWrong) {
-            try {
-                display.displayMenu(); // TODO to
-                display.askForMenuChoice(); // TODO i to powinno być poza tryem (bo te dwie linijki nie rzucą wyjątku)
-                String usersChoice = scanner.nextLine();
-                player.setMenuChoice(Integer.parseInt(usersChoice)); // TODO menu choice powinno być enumem
-            } catch (NumberFormatException e) {
-                System.err.println("Wrong number!");
-            }
-            switch (player.getMenuChoice()) { // TODO zadanie na skype
-                case 1:
-                    int firstNumber;
-                    int secondNumber;
-                    for (int i = 1; i <= 11; i++) {
-                        firstNumber = (int) (Math.random() * level) + 1;
-                        secondNumber = (int) (Math.random() * level) + 1;
+        Operation operation = getOperation();
 
-                        display.displayQuestion(i, firstNumber, secondNumber, '+');
-                        display.askForAnswer();
+        for (int i = 1; i <= 10; i++) {
+            int first = (int) (Math.random() * level) + 1;
+            int second = (int) (Math.random() * level) + 1;
 
-                        if (Objects.equals(scanner.nextLine(), Integer.toString(firstNumber + secondNumber))) {
-                            display.goodAnswer();
-                            player.addPoint();
-                        } else {
-                            display.wrongAnswer();
-                        }
-                    }
-                    usersMenuChoiceWrong = false;
-                    break;
-                case 2:
-                    for (int i = 1; i <= 11; i++) {
-                        firstNumber = (int) (Math.random() * level) + 1;
-                        secondNumber = (int) (Math.random() * level) + 1;
+            display.displayQuestion(i, first, second, operation.getChar());
+            display.askForAnswer();
 
-                        System.out.println(Integer.toString(firstNumber - secondNumber));
-                        display.displayQuestion(i, firstNumber, secondNumber, '-');
-                        display.askForAnswer();
-
-
-                        if (Objects.equals(scanner.nextLine(), Integer.toString(firstNumber - secondNumber))) {
-                            display.goodAnswer();
-                            player.addPoint();
-                        } else {
-                            display.wrongAnswer();
-                        }
-                    }
-                    usersMenuChoiceWrong = false;
-                    break;
-                case 3:
-                    for (int i = 1; i <= 11; i++) {
-                        firstNumber = (int) (Math.random() * level) + 1;
-                        secondNumber = (int) (Math.random() * level) + 1;
-
-                        display.displayQuestion(i, firstNumber, secondNumber, '*');
-                        display.askForAnswer();
-
-                        if (Objects.equals(scanner.nextLine(), Integer.toString(firstNumber * secondNumber))) {
-                            display.goodAnswer();
-                            player.addPoint();
-                        } else {
-                            display.wrongAnswer();
-                        }
-                    }
-                    usersMenuChoiceWrong = false;
-                    break;
-                case 4:
-                    for (int i = 1; i <= 11; i++) {
-                        firstNumber = (int) (Math.random() * level) + 1;
-                        secondNumber = (int) (Math.random() * level) + 1;
-
-                        display.displayQuestion(i, firstNumber, secondNumber, '^');
-                        display.askForAnswer();
-
-                        if (Objects.equals(scanner.nextLine(), Double.toString(Math.pow(firstNumber, secondNumber)))) {
-                            display.goodAnswer();
-                            player.addPoint();
-                        } else {
-                            display.wrongAnswer();
-                        }
-                    }
-                    usersMenuChoiceWrong = false;
-                    break;
-                case 5:
-                    for (int i = 1; i <= 11; i++) {
-                        firstNumber = (int) (Math.random() * level) + 1;
-                        secondNumber = (int) (Math.random() * level) + 1;
-
-                        display.displayQuestion(i, firstNumber, secondNumber, '/');
-                        display.askForAnswer();
-
-                        if (Objects.equals(scanner.nextLine(), Integer.toString(firstNumber / secondNumber))) {
-                            display.goodAnswer();
-                            player.addPoint();
-                        } else {
-                            display.wrongAnswer();
-                        }
-                    }
-                    usersMenuChoiceWrong = false;
-                    break;
-                default:
-                    System.out.println("You chose wrong option. Try to type it again.");
+            if (Objects.equals(scanner.nextLine(), Float.toString(operation.getResult(first, second)))) {
+                display.goodAnswer();
+                player.addPoint();
+            } else {
+                display.wrongAnswer();
             }
         }
+
         display.displayScore();
         display.displayEndMessage();
+    }
+
+    private Operation getOperation() {
+        while (true) {
+            try {
+                String userInput = scanner.nextLine();
+                int choice = Integer.parseInt(userInput);
+                return operations.get(choice - 1);
+            } catch (NumberFormatException | IndexOutOfBoundsException e) {
+                System.err.println("Podales zly number. Sprobuj ponownie.");
+            }
+        }
     }
 }
