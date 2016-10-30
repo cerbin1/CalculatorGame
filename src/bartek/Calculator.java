@@ -26,7 +26,6 @@ class Calculator {
         display.displayInstructions();
 
         Difficulty userDifficulty = display.askForDifficultyLevel();
-        player.setDifficulty(userDifficulty);
 
         int level = userDifficulty.getLevel();
         System.out.println(userDifficulty.getDescription());
