@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 class Calculator {
     final static private Scanner scanner = new Scanner(System.in);
-    private boolean usersMenuChoiceWrong = true;
 
     void run() {
         Player player = new Player();
