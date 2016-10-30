@@ -38,7 +38,7 @@ class Calculator {
                 case 1:
                     int firstNumber;
                     int secondNumber;
-                    for (int i = 1; i <= 10; i++) {
+                    for (int i = 1; i <= 11; i++) {
                         firstNumber = (int) (Math.random() * level) + 1;
                         secondNumber = (int) (Math.random() * level) + 1;
 
@@ -55,7 +55,7 @@ class Calculator {
                     usersMenuChoiceWrong = false;
                     break;
                 case 2:
-                    for (int i = 1; i <= 10; i++) {
+                    for (int i = 1; i <= 11; i++) {
                         firstNumber = (int) (Math.random() * level) + 1;
                         secondNumber = (int) (Math.random() * level) + 1;
 
@@ -74,7 +74,7 @@ class Calculator {
                     usersMenuChoiceWrong = false;
                     break;
                 case 3:
-                    for (int i = 1; i <= 10; i++) {
+                    for (int i = 1; i <= 11; i++) {
                         firstNumber = (int) (Math.random() * level) + 1;
                         secondNumber = (int) (Math.random() * level) + 1;
 
@@ -91,7 +91,24 @@ class Calculator {
                     usersMenuChoiceWrong = false;
                     break;
                 case 4:
-                    for (int i = 1; i <= 10; i++) {
+                    for (int i = 1; i <= 11; i++) {
+                        firstNumber = (int) (Math.random() * level) + 1;
+                        secondNumber = (int) (Math.random() * level) + 1;
+
+                        display.displayQuestion(i, firstNumber, secondNumber, '^');
+                        display.askForAnswer();
+
+                        if (Objects.equals(scanner.nextLine(), Double.toString(Math.pow(firstNumber, secondNumber)))) {
+                            display.goodAnswer();
+                            player.addPoint();
+                        } else {
+                            display.wrongAnswer();
+                        }
+                    }
+                    usersMenuChoiceWrong = false;
+                    break;
+                case 5:
+                    for (int i = 1; i <= 11; i++) {
                         firstNumber = (int) (Math.random() * level) + 1;
                         secondNumber = (int) (Math.random() * level) + 1;
 
