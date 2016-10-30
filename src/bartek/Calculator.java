@@ -39,7 +39,6 @@ class Calculator {
             display.displayMenu(); // TODO to
             display.askForMenuChoice(); // TODO i to powinno być poza tryem (bo te dwie linijki nie rzucą wyjątku)
             String usersChoice = scanner.nextLine();
-            player.setMenuChoice(Integer.parseInt(usersChoice)); // TODO menu choice powinno być enumem
             operation = operations.get(Integer.parseInt(usersChoice) - 1);
         } catch (NumberFormatException e) {
             System.err.println("Wrong number!");

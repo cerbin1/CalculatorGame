@@ -3,7 +3,6 @@ package bartek;
 class Player {
     private String name;
     private int score = 0;
-    private int menuChoice;
     private Difficulty difficulty;
 
     void setName(String name) { // TODO to powinien być parametr konstruktora
@@ -22,13 +21,6 @@ class Player {
         this.score++;
     }
 
-    void setMenuChoice(int choice) {
-        this.menuChoice = choice;
-    }
-
-    int getMenuChoice() {
-        return menuChoice;
-    }
 
     void setDifficulty(Difficulty diff) {
         this.difficulty = diff;
