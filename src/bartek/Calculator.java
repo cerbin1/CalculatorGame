@@ -9,17 +9,16 @@ import java.util.Scanner;
 
 class Calculator {
     final static private Scanner scanner = new Scanner(System.in);
+    private List<Operation> operations = new ArrayList<>();
 
     void run() {
         Player player = new Player();
-        List<Operation> operations = new ArrayList<>();
         operations.add(new Addition());
         operations.add(new Substraction());
         operations.add(new Power());
         operations.add(new Multiplication());
 
         Display display = new Display(player, scanner, operations);
-        Operation operation = null;
 
         player.setName(display.askForName());
 
@@ -32,17 +31,10 @@ class Calculator {
         int level = userDifficulty.getLevel();
         System.out.println(userDifficulty.getDescription());
 
-        // TODO usersMenuChoiceWrong do wyjebania
-        // TODO flagi są chujowe, a usersMenuChoiceWrong jest flagą
+        display.displayMenu();
+        display.askForMenuChoice();
 
-        try {
-            display.displayMenu(); // TODO to
-            display.askForMenuChoice(); // TODO i to powinno być poza tryem (bo te dwie linijki nie rzucą wyjątku)
-            String usersChoice = scanner.nextLine();
-            operation = operations.get(Integer.parseInt(usersChoice) - 1);
-        } catch (NumberFormatException e) {
-            System.err.println("Wrong number!");
-        }
+        Operation operation = getOperation();
 
         for (int i = 1; i <= 10; i++) {
             int first = (int) (Math.random() * level) + 1;
@@ -61,5 +53,17 @@ class Calculator {
 
         display.displayScore();
         display.displayEndMessage();
+    }
+
+    private Operation getOperation() {
+        while (true) {
+            try {
+                String userInput = scanner.nextLine();
+                int choice = Integer.parseInt(userInput);
+                return operations.get(choice - 1);
+            } catch (NumberFormatException | IndexOutOfBoundsException e) {
+                System.err.println("Podales zly number. Sprobuj ponownie.");
+            }
+        }
     }
 }
