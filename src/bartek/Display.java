@@ -1,15 +1,20 @@
 package bartek;
 
+import bartek.operation.Operation;
+
+import java.util.List;
 import java.util.Scanner;
 
 // TODO w klasie Display metody które zaczynają się od ask powinny w środu robić scanner.nextLine() i zwracać to co ktoś wpisał.
 class Display {
     private final Player player;
     private final Scanner scanner;
+    private List<Operation> operations;
 
-    Display(Player player, Scanner scanner) {
+    Display(Player player, Scanner scanner, List<Operation> operations) {
         this.player = player;
         this.scanner = scanner;
+        this.operations = operations;
     }
 
     String askForName() {
@@ -33,10 +38,9 @@ class Display {
 
     void displayMenu() {
         System.out.println("Now choose what you want to do:");
-        System.out.println("1. Addition");
-        System.out.println("2. Subtraction");
-        System.out.println("3. Multiplication");
-        System.out.println("4. Division");
+        for (Operation operation : this.operations) {
+            System.out.println(operation.getName());
+        }
     }
 
     void askForMenuChoice() {
