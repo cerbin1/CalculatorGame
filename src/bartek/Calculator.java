@@ -36,34 +36,31 @@ class Calculator {
         // TODO usersMenuChoiceWrong do wyjebania
         // TODO flagi są chujowe, a usersMenuChoiceWrong jest flagą
 
-        while (usersMenuChoiceWrong) {
-            try {
-                display.displayMenu(); // TODO to
-                display.askForMenuChoice(); // TODO i to powinno być poza tryem (bo te dwie linijki nie rzucą wyjątku)
-                String usersChoice = scanner.nextLine();
-                player.setMenuChoice(Integer.parseInt(usersChoice)); // TODO menu choice powinno być enumem
-                operation = operations.get(Integer.parseInt(usersChoice) - 1);
-            } catch (NumberFormatException e) {
-                System.err.println("Wrong number!");
-            }
-
-            for (int i = 1; i <= 10; i++) {
-                int first = (int) (Math.random() * level) + 1;
-                int second = (int) (Math.random() * level) + 1;
-
-                display.displayQuestion(i, first, second, operation.getChar());
-                display.askForAnswer();
-
-                if (Objects.equals(scanner.nextLine(), Float.toString(operation.getResult(first, second)))) {
-                    display.goodAnswer();
-                    player.addPoint();
-                } else {
-                    display.wrongAnswer();
-                }
-            }
-            usersMenuChoiceWrong = false;
-
+        try {
+            display.displayMenu(); // TODO to
+            display.askForMenuChoice(); // TODO i to powinno być poza tryem (bo te dwie linijki nie rzucą wyjątku)
+            String usersChoice = scanner.nextLine();
+            player.setMenuChoice(Integer.parseInt(usersChoice)); // TODO menu choice powinno być enumem
+            operation = operations.get(Integer.parseInt(usersChoice) - 1);
+        } catch (NumberFormatException e) {
+            System.err.println("Wrong number!");
         }
+
+        for (int i = 1; i <= 10; i++) {
+            int first = (int) (Math.random() * level) + 1;
+            int second = (int) (Math.random() * level) + 1;
+
+            display.displayQuestion(i, first, second, operation.getChar());
+            display.askForAnswer();
+
+            if (Objects.equals(scanner.nextLine(), Float.toString(operation.getResult(first, second)))) {
+                display.goodAnswer();
+                player.addPoint();
+            } else {
+                display.wrongAnswer();
+            }
+        }
+
         display.displayScore();
         display.displayEndMessage();
     }
